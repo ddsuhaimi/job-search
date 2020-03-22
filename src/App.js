@@ -14,6 +14,7 @@ export default function App() {
   const [jobs, setJobs] = useState([]);
   // const [search, setSearch] = useState("");
   const [jobTitle, setJobTitle] = useState("");
+  const [jobLocation, setJobLocation] = useState("")
   const [queryParams, setQueryParams] = useState({});
   const [reqUrl, setReqUrl] = useState(baseUrl);
   const initialReqUrlRender = useRef(true);
@@ -38,11 +39,12 @@ export default function App() {
       console.log('sub Jobtitle')
       const newQueryParams = {
         ...queryParams,
-        description: jobTitle
+        description: jobTitle,
+        location: jobLocation
       };
       setQueryParams(newQueryParams);
     }
-  }, [jobTitle]);
+  }, [jobTitle, jobLocation]);
 
   useEffect(() => {
     if (initialQueryParamsRender.current) {
@@ -71,12 +73,18 @@ export default function App() {
     setJobTitle(newJobTitle);
     // console.log(await stringify(queryParams))
   };
+  const updateJobLocation = async newJobLocation => {
+    setJobLocation(newJobLocation)
+  }
   return (
     <div className="App">
       <Header />
       <BigJumbo />
       <Container>
-        <SearchJob updateJobTitle={updateJobTitle} />
+        <SearchJob 
+          updateJobTitle={updateJobTitle} 
+          updateJobLocation={updateJobLocation}
+        />
         <JobsList jobs={jobs} />
       </Container>
       <Footer />
