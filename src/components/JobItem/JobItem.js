@@ -11,7 +11,7 @@ export default function JobItem({ job }) {
   console.log(date);
   return (
     <Card
-      style={{ minWidth: "18rem" }}
+      // style={{ minWidth: "18rem" }}
       bg="light"
       // className="mb-3 mr-3"
     >
