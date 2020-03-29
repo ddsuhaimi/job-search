@@ -8,7 +8,7 @@ export default function JobItem({ job }) {
   date = `${date.getDate()} ${date.toLocaleString("default", {
     month: "long"
   })}`;
-  console.log(date);
+  // console.log(date);
   return (
     <Card
       // style={{ minWidth: "18rem" }}
@@ -23,7 +23,9 @@ export default function JobItem({ job }) {
         </small>
       </Card.Header> */}
       <Card.Body>
-        <Card.Title>{title}</Card.Title>
+        <Card.Title>{title} 
+        <small className="text-muted"> <i className="fab fa-github"/></small>
+        </Card.Title>
         <Card.Text>
           <i className="fas fa-map-marker-alt" /> {location}
           <br />

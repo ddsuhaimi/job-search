@@ -1,26 +1,23 @@
 import React, { useState } from "react";
 import { Form, FormControl, Button, InputGroup } from "react-bootstrap";
 
-export default function SearchJob({ updateJobTitle, updateJobLocation }) {
-  const [search, setSearch] = useState("");
-  const [location, setLocation] = useState("")
+export default function SearchJob({ updateJobDetail, updateJobTitle, updateJobLocation }) {
+  const [job, setJob] = useState({
+    title: "",
+    location: ""
+  })
 
   const onSubmit = e => {
     e.preventDefault();
-    // setSearch(search);
-    updateJobTitle(search);
-    updateJobLocation(location)
-
-    // console.log(object)
+    updateJobDetail(job)
   };
 
   const onChange = e => {
-    setSearch(e.target.value);
+    // setSearch(e.target.value);
+    setJob({
+      ...job, [e.target.name] : e.target.value
+    })
   };
-  const onChangeJobLocation = e => {
-    setLocation(e.target.value)
-    console.log(location)
-  }
   return (
     <Form className="mb-4" onSubmit={onSubmit}>
       <InputGroup>
@@ -31,6 +28,8 @@ export default function SearchJob({ updateJobTitle, updateJobLocation }) {
         </InputGroup.Prepend>
         <FormControl
           type="text"
+          value={job.title}
+          name="title"
           placeholder="Search Jobs"
           className="mr-sm-2"
           onChange={onChange}
@@ -42,9 +41,11 @@ export default function SearchJob({ updateJobTitle, updateJobLocation }) {
         </InputGroup.Prepend>
         <FormControl
           type="text"
+          value={job.location}
+          name="location"
           placeholder="Search Location"
           className="mr-sm-2"
-          onChange={onChangeJobLocation}
+          onChange={onChange}
         />
         <Button type="submit" variant="outline-info">
           Search
