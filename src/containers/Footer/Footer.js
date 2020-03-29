@@ -10,8 +10,8 @@ export default function Footer() {
         backgroundColor: "#f5f5f5"
       }}
     >
-      <Container className="py-3">
-        <span className="text-muted">
+      <Container className="py-3 text-center">
+        <span className="text-muted text-centered">
           Created with <i className="fas fa-heart" /> by Dedi. You can find me on:
           <br />
               <i className="fab fa-github" /> github.com/dediacc
