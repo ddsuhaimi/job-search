@@ -3,11 +3,12 @@ import { Card, Button, CardDeck } from "react-bootstrap";
 // import { FontAwesomeIcon } from "react-fontawesome";
 
 export default function JobItem({ job }) {
-  const { title, company, location, created_at, url } = job;
+  const { title, company, location, created_at, url, from} = job;
   let date = new Date(created_at);
   date = `${date.getDate()} ${date.toLocaleString("default", {
     month: "long"
   })}`;
+  const iconClass = `fab fa-${from}`
   // console.log(date);
   return (
     <Card
@@ -15,16 +16,9 @@ export default function JobItem({ job }) {
       bg="light"
       // className="mb-3 mr-3"
     >
-      {/* <Card.Header>
-      <small
-          style={{ alignItems: "center" }}
-          className="d-flex justify-content-between text-muted"
-        > from github.com
-        </small>
-      </Card.Header> */}
       <Card.Body>
         <Card.Title>{title} 
-        <small className="text-muted"> <i className="fab fa-github"/></small>
+        <small className="text-muted"> <i className={iconClass} /></small>
         </Card.Title>
         <Card.Text>
           <i className="fas fa-map-marker-alt" /> {location}
