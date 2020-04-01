@@ -43,30 +43,12 @@ export default function App() {
     // setJobs(formattedData)
 
     // // Jooble
-    // const url = `${Config.sitesConfig.jooble.url}${Config.sitesConfig.jooble.API_KEY}`
-    // const params = {
-    //   keywords: job.title,
-    //   location: job.location
-    // }
-
-    // const otherParams = {
-    //   headers: {
-    //     "content-type": "application/json"
-    //   },
-    //   body: params,
-    //   method: "POST"
-    // }
-    // fetch(url, otherParams)
-    // .then(data => {return data.json()})
-    // .then(res => {console.log(res)})
-    console.log('title', job.title)
     let opts = {
-      keywords: job.title === "" ? "it" : job.title,
+      keywords: job.title === "" ? "it" : job.title, // jooble requires keywords field
       location: job.location,
-      page: 2,
-      searchMode: 1
+      searchMode: 1 // recommeded job from jooble
     }
-    response = await fetch('https://cors-anywhere.herokuapp.com/https://jooble.org/api/34852776-0e67-43d5-92f3-87b38f1f01d4', {
+    response = await fetch(`${Config.sitesConfig.jooble.url}${Config.sitesConfig.jooble.API_KEY}`, {
       method: 'post',
       body: JSON.stringify(opts)
     })
